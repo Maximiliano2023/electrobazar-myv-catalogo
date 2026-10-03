@@ -2,7 +2,7 @@ import * as cheerio from "cheerio";
 
 export const BASE = "https://reyesdeloeste.com.ar";
 export const SITE = "https://electrobazarmyv.com";
-export const MARKUP = 1.40;
+export const MARKUP = 1.50;
 
 export const CATEGORIES = [
   ["Hogar", "/tienda/hogar"],
