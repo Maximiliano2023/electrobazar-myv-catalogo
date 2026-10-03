@@ -64,7 +64,7 @@ footer{background:#232323;color:#ddd;text-align:center;padding:25px 18px;font-si
 </main>
 <footer>Electrobazar MYV · Precios sujetos a actualización del proveedor · Consultá disponibilidad antes de confirmar.</footer>
 <script>
-const MARKUP=1.40;
+const MARKUP=1.50;
 const WHATSAPP="5491170582166";
 const icons={"Hogar":"🏠","Moda y accesorios":"👜","Infantil":"🧸","Belleza y cuidado":"✨","Tecnología":"📱","Tiempo libre":"⛺","Iluminación":"💡","Electrodomésticos":"🔌","Ferretería":"🛠️","Librería":"✏️"};
 let products=[],active="Todos";
@@ -97,7 +97,7 @@ function render(){
 }
 async function load(){
   try{
-    const r=await fetch("/api/catalog?precio=50");
+    const r=await fetch("/api/catalog?precio=50-v2");
     if(!r.ok) throw new Error("HTTP "+r.status);
     const data=await r.json();
     products=data.products||[];
