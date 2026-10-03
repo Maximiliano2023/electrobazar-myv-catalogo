@@ -1,0 +1,23 @@
+ACTUALIZACIÓN SEO 2.0 - ELECTROBAZAR MYV
+
+AGREGADO:
+- URLs individuales para cada producto
+- URLs de categorías
+- sitemap.xml automático
+- robots.txt
+- etiquetas canonical
+- títulos y descripciones para Google
+- Open Graph
+- datos estructurados Product (JSON-LD)
+- datos estructurados Organization
+- enlaces desde el catálogo a las fichas de producto
+
+CÓMO ACTUALIZAR:
+1. Descomprimí este ZIP.
+2. En GitHub, dentro del repositorio electrobazar-myv-catalogo, reemplazá los archivos por estos.
+3. Confirmá los cambios.
+4. Netlify volverá a publicar automáticamente.
+5. Después probá:
+   https://electrobazarmyv.com/robots.txt
+   https://electrobazarmyv.com/sitemap.xml
+6. Luego agregamos el dominio a Google Search Console y enviamos sitemap.xml.

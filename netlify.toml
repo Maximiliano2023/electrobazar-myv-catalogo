@@ -14,3 +14,18 @@
   from = "/api/image"
   to = "/.netlify/functions/image"
   status = 200
+
+[[redirects]]
+  from = "/producto/*"
+  to = "/.netlify/functions/seo-page"
+  status = 200
+
+[[redirects]]
+  from = "/categoria/*"
+  to = "/.netlify/functions/seo-page"
+  status = 200
+
+[[redirects]]
+  from = "/sitemap.xml"
+  to = "/.netlify/functions/sitemap"
+  status = 200
