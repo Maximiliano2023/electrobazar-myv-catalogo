@@ -97,7 +97,7 @@ function render(){
 }
 async function load(){
   try{
-    const r=await fetch("/api/catalog");
+    const r=await fetch("/api/catalog?precio=50");
     if(!r.ok) throw new Error("HTTP "+r.status);
     const data=await r.json();
     products=data.products||[];
