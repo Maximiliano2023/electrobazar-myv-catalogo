@@ -4,7 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Electrobazar MYV | Catálogo</title>
-<meta name="description" content="Catálogo online Electrobazar MYV">
+<meta name="description" content="Electrobazar MYV: catálogo online de hogar, electrodomésticos, tecnología, belleza, ferretería, iluminación y más. Consultas por WhatsApp y entregas en zonas de Buenos Aires.">
+<link rel="canonical" href="https://electrobazarmyv.com/">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta property="og:title" content="Electrobazar MYV | Catálogo online">
+<meta property="og:description" content="Productos para el hogar, tecnología, belleza, ferretería y más. Consultá por WhatsApp.">
+<meta property="og:url" content="https://electrobazarmyv.com/">
 <style>
 :root{--brand:#5d3ff1;--brand2:#8069ff;--bg:#f5f5f7;--card:#fff;--text:#222;--muted:#737373;--line:#e4e4e9;--green:#159957}
 *{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text)}
@@ -26,6 +31,23 @@ footer{background:#232323;color:#ddd;text-align:center;padding:25px 18px;font-si
 @media(max-width:900px){.grid{grid-template-columns:repeat(2,1fr)}.cats{grid-template-columns:repeat(3,1fr)}.heroBox{flex-direction:column;align-items:flex-start}}
 @media(max-width:560px){.top{flex-direction:column;align-items:stretch}.logo{text-align:center}.cats{grid-template-columns:repeat(2,1fr)}.grid{gap:9px}.pic{height:165px}.name{font-size:13px}.price{font-size:20px}}
 </style>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"Organization",
+  "name":"Electrobazar MYV",
+  "url":"https://electrobazarmyv.com/",
+  "areaServed":"Buenos Aires, Argentina",
+  "contactPoint":{
+    "@type":"ContactPoint",
+    "telephone":"+54 9 11 7058-2166",
+    "contactType":"sales",
+    "availableLanguage":"Spanish"
+  }
+}
+</script>
+
 </head>
 <body>
 <header>
@@ -49,6 +71,8 @@ let products=[],active="Todos";
 
 function money(n){return new Intl.NumberFormat("es-AR",{style:"currency",currency:"ARS",maximumFractionDigits:0}).format(n)}
 function finalPrice(c){return Math.ceil((c*MARKUP)/100)*100}
+function slugify(s=""){return s.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[^a-z0-9]+/g,"-").replace(/^-+|-+$/g,"")}
+function productUrl(p){return "/producto/"+slugify(p.name+"-"+(p.code||""))}
 function esc(s){return String(s??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m]))}
 function setCat(c){active=c;document.getElementById("title").textContent=c==="Todos"?"Todos los productos":c;render();window.scrollTo({top:document.querySelector(".toolbar").offsetTop-120,behavior:"smooth"})}
 function setupCats(){
@@ -68,7 +92,7 @@ function render(){
     const fp=finalPrice(p.cost);
     const msg=encodeURIComponent(`Hola, quiero consultar por ${p.name}${p.code?` (código ${p.code})`:""}. Precio publicado: ${money(fp)}`);
     const img=p.image?`<img loading="lazy" src="/api/image?url=${encodeURIComponent(p.image)}" alt="${esc(p.name)}" onerror="this.parentNode.innerHTML='<div class=&quot;ph&quot;>🛍️<b>Imagen no disponible</b></div>'">`:`<div class="ph">${icons[p.category]||"🛍️"}<b>${esc(p.name)}</b></div>`;
-    return `<article class="card"><div class="pic"><span class="badge">${esc(p.category)}</span>${img}</div><div class="info"><div class="code">${p.code?`Código ${esc(p.code)}`:""}</div><div class="name">${esc(p.name)}</div><div class="price">${money(fp)}</div><div class="ok">Consultá disponibilidad y entrega</div><a class="wa" target="_blank" href="https://wa.me/${WHATSAPP}?text=${msg}">💬 Consultar por WhatsApp</a></div></article>`;
+    return `<article class="card"><div class="pic"><span class="badge">${esc(p.category)}</span>${img}</div><div class="info"><div class="code">${p.code?`Código ${esc(p.code)}`:""}</div><div class="name"><a href="${productUrl(p)}" style="color:inherit;text-decoration:none">${esc(p.name)}</a></div><div class="price">${money(fp)}</div><div class="ok">Consultá disponibilidad y entrega</div><a class="wa" target="_blank" href="https://wa.me/${WHATSAPP}?text=${msg}">💬 Consultar por WhatsApp</a></div></article>`;
   }).join("")||'<div class="loading">No encontramos productos.</div>';
 }
 async function load(){
