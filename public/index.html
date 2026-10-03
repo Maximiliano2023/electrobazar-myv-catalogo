@@ -64,6 +64,15 @@ footer{background:#232323;color:#ddd;text-align:center;padding:25px 18px;font-si
 </main>
 <footer>Electrobazar MYV · Precios sujetos a actualización del proveedor · Consultá disponibilidad antes de confirmar.</footer>
 <script>
+
+function normalizeSearchText(value=""){
+  return String(value)
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g,"")
+    .trim();
+}
+
 const MARKUP=1.50;
 const WHATSAPP="5491170582166";
 const icons={"Hogar":"🏠","Moda y accesorios":"👜","Infantil":"🧸","Belleza y cuidado":"✨","Tecnología":"📱","Tiempo libre":"⛺","Iluminación":"💡","Electrodomésticos":"🔌","Ferretería":"🛠️","Librería":"✏️"};
