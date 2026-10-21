@@ -38,8 +38,15 @@ export default async (req) => {
       if (!p) return new Response("Producto no encontrado",{status:404});
       const fp = finalPrice(p.cost), canonical = `${SITE}/producto/${productSlug(p)}`;
       const description = `Comprá ${p.name} en Electrobazar MYV. Precio ${money(fp)}. Consultá disponibilidad y entrega por WhatsApp.`;
-      const whatsapp = `https://wa.me/5491170582166?text=${encodeURIComponent(`Hola, quiero consultar por ${p.name}${p.code?` (código ${p.code})`:""}. Precio publicado: ${money(fp)}`)}`;
-      const jsonld = JSON.stringify({
+      const whatsapp = `https://wa.me/5491170582166?text=${encodeURIComponent(`¡Hola! 😊 Quiero realizar un pedido en Electrobazar MYV 🛍️
+
+📦 Producto: ${p.name}
+${p.code ? `🔖 Código: ${p.code}` : ""}
+💰 Precio: ${money(fp)}
+
+🚚 Quisiera coordinar la entrega a domicilio.
+
+¿Me confirmás disponibilidad y cuándo podría recibirlo? ¡Gracias!`)}`;
         "@context":"https://schema.org","@type":"Product","name":p.name,
         "sku":p.code || undefined,"image":p.image?[p.image]:undefined,"description":description,
         "offers":{"@type":"Offer","url":canonical,"priceCurrency":"ARS","price":fp,
