@@ -1,3 +1,4 @@
+
 [build]
   publish = "public"
   functions = "netlify/functions"
@@ -24,3 +25,4 @@
   from = "/categoria/*"
   to = "/.netlify/functions/seo-page"
   status = 200
+  
