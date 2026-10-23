@@ -59,6 +59,20 @@ footer{background:#181923}
 @media(max-width:760px){.top{flex-wrap:wrap}.logo{font-size:23px}.contact{font-size:12px}.search{order:3;flex-basis:100%}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.shop-layout{display:flex;flex-direction:column}.sidebar h3{display:none}.trust{grid-template-columns:repeat(2,1fr)}.navin{justify-content:flex-start}.heroBox{min-height:165px}}
 @media(max-width:380px){.contact{font-size:11px}.logo{font-size:20px}.pic{height:150px}.price{font-size:19px}}
 .logo img{width:38px;height:38px;object-fit:contain;vertical-align:middle;margin-right:8px;border-radius:9px}@media(max-width:560px){.logo img{width:30px;height:30px}}
+
+/* Banners MYV: ligeros, sin dependencias externas */
+#status{display:none!important}
+.banner-carousel{max-width:1480px;margin:14px auto 4px;padding:0 18px;position:relative}
+.banner-stage{position:relative;min-height:245px;border-radius:22px;overflow:hidden;background:#a7007c;box-shadow:0 8px 25px #a41d7130}
+.banner-slide{display:none;min-height:245px;box-sizing:border-box;padding:32px 76px;align-items:center;justify-content:space-between;gap:24px;color:white;isolation:isolate}
+.banner-slide.is-active{display:flex}
+.banner-slide:nth-child(1){background:linear-gradient(115deg,#ea006c,#ff8b35)}
+.banner-slide:nth-child(2){background:linear-gradient(115deg,#421bb0,#079ac7)}
+.banner-slide:nth-child(3){background:linear-gradient(115deg,#e60077,#a627d9)}
+.banner-slide:nth-child(4){background:linear-gradient(115deg,#8527bb,#f54c92)}
+.banner-slide:nth-child(5){background:linear-gradient(115deg,#ff6c00,#f50075)}
+.banner-copy{max-width:700px;z-index:1}.banner-kicker{font-weight:800;letter-spacing:.11em;text-transform:uppercase;font-size:13px}.banner-copy h2{font-size:clamp(27px,4vw,52px);line-height:1.07;margin:12px 0;text-shadow:0 3px 8px #0002}.banner-copy p{font-size:clamp(14px,1.7vw,19px);margin:0 0 22px}.banner-cta{background:#fff;color:#a00067;border:0;border-radius:40px;padding:12px 20px;font-weight:900;cursor:pointer}.banner-photo{width:205px;height:185px;object-fit:contain;background:#ffffffed;border:6px solid #ffffff9c;border-radius:25px;box-shadow:0 10px 25px #0002}.banner-emoji{font-size:110px;line-height:1;filter:drop-shadow(0 7px 8px #0003)}.banner-arrow{position:absolute;top:43%;z-index:3;border:0;background:#fffffff0;border-radius:50%;width:38px;height:38px;font-size:25px;cursor:pointer}.banner-arrow.prev{left:12px}.banner-arrow.next{right:12px}.banner-dots{display:flex;justify-content:center;gap:8px;padding:10px}.banner-dot{height:10px;width:10px;border:0;border-radius:50%;background:#e8b9d6;cursor:pointer}.banner-dot.on{background:#f00082;width:24px;border-radius:8px}
+@media(max-width:760px){.banner-carousel{padding:0 10px}.banner-slide{padding:24px 44px;min-height:215px}.banner-stage{min-height:215px}.banner-photo{width:105px;height:115px;border-width:3px}.banner-emoji{font-size:65px}.banner-copy h2{font-size:25px}.banner-copy p{font-size:13px}.banner-kicker{font-size:10px}.banner-cta{padding:9px 13px;font-size:12px}}
 </style>
 
 <script type="application/ld+json">
@@ -84,7 +98,7 @@ footer{background:#181923}
 
 </header>
 <div class="nav"><div class="navin"><button onclick="setCat('Todos')">⌂ Inicio</button><button onclick="document.getElementById('q').focus()">🏷️ Ofertas y productos</button><button onclick="document.querySelector('.sidebar').scrollIntoView({behavior:'smooth'})">☰ Categorías</button><button onclick="window.open('https://wa.me/5491168247942','_blank')">✉ Contacto</button></div></div>
-<section class="hero"><div class="heroBox"><div><h1>TODO PARA TU HOGAR</h1><p>✨ Gran variedad, precios increíbles y pedidos por WhatsApp</p></div><div class="pill">🚚 Pedidos y entregas</div></div></section>
+<section class="banner-carousel" aria-label="Promociones de Electrobazar MYV"><div class="banner-stage"><div class="banner-slide is-active" data-banner-cat="Hogar"><div class="banner-copy"><div class="banner-kicker">ELECTROBAZAR MYV · Bazar y hogar</div><h2>Todo para tu casa</h2><p>Descubrí opciones para renovar tus espacios</p><button class="banner-cta" type="button" data-category="Hogar">Ver productos →</button></div><div class="banner-visual"><span class="banner-emoji" aria-hidden="true">🏠</span></div></div><div class="banner-slide" data-banner-cat="Electrodomésticos"><div class="banner-copy"><div class="banner-kicker">ELECTROBAZAR MYV · Electrodomésticos</div><h2>Hacé tu día más fácil</h2><p>Prácticos productos para todos los días</p><button class="banner-cta" type="button" data-category="Electrodomésticos">Ver productos →</button></div><div class="banner-visual"><span class="banner-emoji" aria-hidden="true">⚡</span></div></div><div class="banner-slide" data-banner-cat="Infantil"><div class="banner-copy"><div class="banner-kicker">ELECTROBAZAR MYV · Juguetería</div><h2>Diversión para regalar</h2><p>Encontrá nuevas ideas para sorprender</p><button class="banner-cta" type="button" data-category="Infantil">Ver productos →</button></div><div class="banner-visual"><span class="banner-emoji" aria-hidden="true">🧸</span></div></div><div class="banner-slide" data-banner-cat="Belleza y cuidado"><div class="banner-copy"><div class="banner-kicker">ELECTROBAZAR MYV · Belleza</div><h2>Tu momento de cuidado</h2><p>Productos para verte y sentirte bien</p><button class="banner-cta" type="button" data-category="Belleza y cuidado">Ver productos →</button></div><div class="banner-visual"><span class="banner-emoji" aria-hidden="true">✨</span></div></div><div class="banner-slide" data-banner-cat="Todos"><div class="banner-copy"><div class="banner-kicker">ELECTROBAZAR MYV · Ofertas</div><h2>Descubrí nuestros productos</h2><p>Variedad y precios para elegir</p><button class="banner-cta" type="button" data-category="Todos">Ver productos →</button></div><div class="banner-visual"><span class="banner-emoji" aria-hidden="true">🔥</span></div></div><button class="banner-arrow prev" type="button" aria-label="Banner anterior">‹</button><button class="banner-arrow next" type="button" aria-label="Banner siguiente">›</button></div><div class="banner-dots" aria-label="Seleccionar banner"></div></section>
 <div class="trust"><div>🏷️ <b>PRECIOS</b> ECONÓMICOS</div><div>🚚 ENTREGA A DOMICILIO</div><div>💬 COMPRA POR WHATSAPP</div><div>✨ GRAN VARIEDAD</div></div>
 <main class="wrap">
 <div class="status" id="status">Actualizando catálogo…</div>
@@ -164,6 +178,7 @@ async function load(){
     if(!products.length) throw new Error("Catálogo vacío");
     setupCats();
     render();
+    populateBannerPhotos();
     const d=new Date(data.updatedAt);
     document.getElementById("status").textContent=`Catálogo · ${products.length} productos · última consulta ${d.toLocaleString("es-AR")}`;
   }catch(e){
@@ -171,6 +186,19 @@ async function load(){
     document.getElementById("grid").innerHTML='<div class="loading">Error al cargar productos.</div>';
   }
 }
+
+const bannerSlides=[...document.querySelectorAll('.banner-slide')];
+let bannerIndex=0;
+const bannerDots=document.querySelector('.banner-dots');
+function setBanner(n){bannerIndex=(n+bannerSlides.length)%bannerSlides.length;bannerSlides.forEach((s,i)=>s.classList.toggle('is-active',i===bannerIndex));[...bannerDots.children].forEach((b,i)=>b.classList.toggle('on',i===bannerIndex));}
+bannerSlides.forEach((s,i)=>{const b=document.createElement('button');b.type='button';b.className='banner-dot';b.setAttribute('aria-label','Mostrar banner '+(i+1));b.addEventListener('click',()=>setBanner(i));bannerDots.appendChild(b);});
+setBanner(0);
+document.querySelector('.banner-arrow.prev').addEventListener('click',()=>setBanner(bannerIndex-1));
+document.querySelector('.banner-arrow.next').addEventListener('click',()=>setBanner(bannerIndex+1));
+document.querySelectorAll('.banner-cta').forEach(b=>b.addEventListener('click',()=>{const wanted=b.dataset.category;const found=products.some(p=>p.category===wanted);setCat(wanted==='Todos'||!found?'Todos':wanted);}));
+setInterval(()=>{if(!document.hidden)setBanner(bannerIndex+1)},5000);
+function populateBannerPhotos(){bannerSlides.forEach((slide,i)=>{const category=slide.dataset.bannerCat;const candidates=products.filter(p=>p.image&&(category==='Todos'||p.category===category));if(!candidates.length)return;const p=candidates[(i*7)%candidates.length];const img=document.createElement('img');img.className='banner-photo';img.alt=p.name;img.loading=i===0?'eager':'lazy';img.decoding='async';img.src='/api/image?url='+encodeURIComponent(p.image);img.onerror=()=>img.remove();slide.querySelector('.banner-visual').prepend(img);slide.querySelector('.banner-emoji').style.display='none';img.onerror=()=>{img.remove();slide.querySelector('.banner-emoji').style.display='block';};});}
+
 load();
 </script>
 </body>
