@@ -1,0 +1,1 @@
+Se priorizan las primeras 12 fotos y se habilita cache de navegador/CDN por 7 dias para imagenes del proveedor. Las imagenes del proveedor que cambien manteniendo exactamente la misma URL podrian demorar hasta 7 dias en actualizarse. No garantiza carga instantanea en primera visita. Se conservan precios y catalogo.

@@ -20,7 +20,8 @@ export default async (req) => {
       status: 200,
       headers: {
         "content-type": r.headers.get("content-type") || "image/jpeg",
-        "cache-control": "public, max-age=86400, s-maxage=604800"
+        "cache-control": "public, max-age=604800, immutable",
+        "netlify-cdn-cache-control": "public, durable, max-age=604800"
       }
     });
   } catch (e) {

@@ -100,7 +100,7 @@ function render(){
   document.getElementById("grid").innerHTML=list.map((p,i)=>{
     const fp=finalPrice(p.cost);
     const msg=encodeURIComponent(`¡Hola! 😊 Quiero realizar un pedido en Electrobazar MYV 🛍️\n\n📦 Producto: ${p.name}${p.code?`\n🔖 Código: ${p.code}`:""}\n💰 Precio publicado: ${money(fp)}\n\n🚚 Quisiera coordinar la entrega a domicilio.\n\n¿Me confirmás disponibilidad y cuándo podría recibirlo? ¡Gracias!`);
-    const img=p.image?`<img loading="${i<8?"eager":"lazy"}" ${i<4?'fetchpriority="high"':''} decoding="async" src="/api/image?url=${encodeURIComponent(p.image)}" alt="${esc(p.name)}" onerror="this.parentNode.innerHTML='<div class=&quot;ph&quot;>🛍️<b>Imagen no disponible</b></div>'">`:`<div class="ph">${icons[p.category]||"🛍️"}<b>${esc(p.name)}</b></div>`;
+    const img=p.image?`<img loading="eager" fetchpriority="high" decoding="async" src="/api/image?url=${encodeURIComponent(p.image)}" alt="${esc(p.name)}" onerror="this.parentNode.innerHTML='<div class=&quot;ph&quot;>🛍️<b>Imagen no disponible</b></div>'">`:`<div class="ph">${icons[p.category]||"🛍️"}<b>${esc(p.name)}</b></div>`;
     return `<article class="card"><div class="pic"><span class="badge">${esc(p.category)}</span>${img}</div><div class="info"><div class="code">${p.code?`Código ${esc(p.code)}`:""}</div><div class="name"><a href="${productUrl(p)}" style="color:inherit;text-decoration:none">${esc(p.name)}</a></div><div class="price">${money(fp)}</div><div class="ok">Pedidos con entrega a domicilio</div><a class="wa" target="_blank" href="https://wa.me/${WHATSAPP}?text=${msg}">🛍️ Hacer mi pedido por WhatsApp</a></div></article>`;
   }).join("")||'<div class="loading">No encontramos productos.</div>';
 }
