@@ -1,0 +1,9 @@
+ELECTROBAZAR MYV - Corrección de error al cargar productos
+
+1. Esta versión intenta cargar /catalogo.json y, si aún no existe, usa /api/catalog como respaldo.
+2. Incluye GitHub Actions para generar public/catalogo.json cada 4 horas.
+3. Para la primera generación, GitHub > Actions > Actualizar catálogo cada 4 horas > Run workflow.
+4. El repositorio debe permitir a GitHub Actions escribir contenido (Settings > Actions > General > Workflow permissions > Read and write permissions).
+5. Los cambios deben quedar en la raíz del repositorio, no dentro de una carpeta extra.
+6. Revisar Deploys en Netlify y probar sitio, producto y WhatsApp.
+7. No se garantiza carga instantánea: la API de respaldo puede tardar la primera vez.

@@ -113,15 +113,24 @@ function updateProducts(){
 }
 async function load(){
   try{
-    let r=await fetch("/catalogo.json", {cache:"default"});
-    if(!r.ok) throw new Error("El catálogo aún no fue generado. Ejecutá la actualización programada.");
-    if(!r.ok) throw new Error("HTTP "+r.status);
-    const data=await r.json();
-    products=data.products||[];
+    // Preferir catálogo estático; usar API como respaldo cuando aún no fue generado.
+    let data;
+    try {
+      const r=await fetch("/catalogo.json", {cache:"default"});
+      if(!r.ok) throw new Error("Catálogo estático no disponible");
+      data=await r.json();
+      if(!Array.isArray(data.products) || !data.products.length) throw new Error("Catálogo vacío");
+    } catch (_) {
+      const r=await fetch("/api/catalog", {cache:"default"});
+      if(!r.ok) throw new Error("No se pudo cargar el catálogo");
+      data=await r.json();
+    }
+    products=Array.isArray(data.products)?data.products:[];
+    if(!products.length) throw new Error("Catálogo vacío");
     setupCats();
     render();
     const d=new Date(data.updatedAt);
-    document.getElementById("status").textContent=`Catálogo programado para actualizarse cada 4 horas · ${products.length} productos · última consulta ${d.toLocaleString("es-AR")}`;
+    document.getElementById("status").textContent=`Catálogo · ${products.length} productos · última consulta ${d.toLocaleString("es-AR")}`;
   }catch(e){
     document.getElementById("status").textContent="No se pudo actualizar el catálogo en este momento. Probá nuevamente en unos minutos.";
     document.getElementById("grid").innerHTML='<div class="loading">Error al cargar productos.</div>';
