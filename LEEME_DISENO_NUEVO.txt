@@ -1,0 +1,1 @@
+Diseño comercial actualizado. Mantiene funciones y configuración original. Banners con fotos dinámicas del catálogo, no imágenes fijas del mockup. Los precios del diseño de referencia eran ilustrativos. Revisar publicación de Netlify y guardar respaldo.
