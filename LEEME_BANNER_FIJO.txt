@@ -1,0 +1,1 @@
+Banner fijo solicitado, recortado de la imagen de referencia proporcionada. Se mantiene el carrusel oculto para preservar las funciones JS. Archivo de imagen en public/banner-myv-fijo.webp.
