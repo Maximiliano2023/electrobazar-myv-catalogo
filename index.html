@@ -31,7 +31,14 @@ footer{background:#232323;color:#ddd;text-align:center;padding:25px 18px;font-si
 @media(max-width:900px){.grid{grid-template-columns:repeat(2,1fr)}.cats{grid-template-columns:repeat(3,1fr)}.heroBox{flex-direction:column;align-items:flex-start}}
 @media(max-width:560px){.top{flex-direction:column;align-items:stretch}.logo{text-align:center}.cats{grid-template-columns:repeat(2,1fr)}.grid{gap:9px}.pic{height:165px}.name{font-size:13px}.price{font-size:20px}}
 
-.shop-layout{display:grid;grid-template-columns:minmax(0,1fr) 205px;gap:20px;align-items:start}.shop-content{min-width:0}.sidebar{position:sticky;top:120px;background:white;border:1px solid var(--line);border-radius:16px;padding:14px;max-height:calc(100vh - 140px);overflow:auto}.sidebar h3{margin:0 0 12px}.cats{display:flex;flex-direction:column;gap:7px;margin:0}.cat{text-align:left;padding:10px;border-radius:9px;font-size:13px}.cat .i{display:inline;margin-right:8px;font-size:16px}.more-wrap{text-align:center;margin:24px 0}#more{background:var(--brand);color:white;border:0;border-radius:12px;padding:14px 28px;font-weight:bold;cursor:pointer}#more[hidden]{display:none}.card .name a{display:block}.card .pic{cursor:pointer}@media(max-width:760px){.shop-layout{grid-template-columns:minmax(0,1fr)}.sidebar{position:static;order:-1;max-height:none}.cats{display:flex;flex-direction:row;overflow-x:auto}.cat{flex:none;white-space:nowrap}.sidebar h3{font-size:14px;margin-bottom:8px}.hero{margin:12px auto}.heroBox{padding:18px}.hero h1{font-size:24px}}
+.shop-layout{display:grid;grid-template-columns:205px minmax(0,1fr);gap:20px;align-items:start}.shop-content{min-width:0}.sidebar{position:sticky;top:120px;background:white;border:1px solid var(--line);border-radius:16px;padding:14px;max-height:calc(100vh - 140px);overflow:auto}.sidebar h3{margin:0 0 12px}.cats{display:flex;flex-direction:column;gap:7px;margin:0}.cat{text-align:left;padding:10px;border-radius:9px;font-size:13px}.cat .i{display:inline;margin-right:8px;font-size:16px}.more-wrap{text-align:center;margin:24px 0}#more{background:var(--brand);color:white;border:0;border-radius:12px;padding:14px 28px;font-weight:bold;cursor:pointer}#more[hidden]{display:none}.card .name a{display:block}.card .pic{cursor:pointer}@media(max-width:760px){.shop-layout{grid-template-columns:minmax(0,1fr)}.sidebar{position:static;order:-1;max-height:none}.cats{display:flex;flex-direction:row;overflow-x:auto}.cat{flex:none;white-space:nowrap}.sidebar h3{font-size:14px;margin-bottom:8px}.hero{margin:12px auto}.heroBox{padding:18px}.hero h1{font-size:24px}}
+
+/* Categorías a la izquierda; menú compacto en teléfonos */
+.desktop-cats{display:block}.mobile-cats{display:none}
+.sidebar .cats{display:flex;flex-direction:column;gap:7px}
+.sidebar .cat{display:block;width:100%;text-align:left;white-space:normal;cursor:pointer;background:#fff;border:1px solid var(--line);font:inherit;font-size:13px;padding:11px;border-radius:9px}
+.sidebar .cat:hover{border-color:var(--brand);background:#f5f2ff}
+@media(max-width:760px){.shop-layout{display:flex;flex-direction:column;gap:12px}.sidebar{width:100%;position:static;order:0;padding:10px}.shop-content{width:100%}.desktop-cats{display:none}.mobile-cats{display:block}.mobile-cats summary{cursor:pointer;font-weight:700;padding:6px}.mobile-cats .cats{max-height:260px;overflow:auto;padding-top:8px}.sidebar .cat{white-space:normal}}
 </style>
 
 <script type="application/ld+json">
@@ -54,15 +61,15 @@ footer{background:#232323;color:#ddd;text-align:center;padding:25px 18px;font-si
 <body>
 <header>
 <div class="top"><div class="logo">Electrobazar MYV</div><div class="search"><input id="q" placeholder="Buscar productos..." oninput="render()"><span>🔎</span></div></div>
-<div class="nav"><div class="navin" id="nav"></div></div>
+
 </header>
 <section class="hero"><div class="heroBox"><div><h1>Elegí tu producto</h1><p>Precios actualizados automáticamente · Consultas por WhatsApp</p></div><div class="pill">🚚 Pedidos y entregas</div></div></section>
 <main class="wrap">
 <div class="status" id="status">Actualizando catálogo…</div>
-<div class="shop-layout"><div class="shop-content">
+<div class="shop-layout"><aside class="sidebar"><details class="mobile-cats"><summary>☰ Ver categorías</summary><div class="cats" id="cats"></div></details><div class="desktop-cats"><h3>Categorías</h3><div class="cats" id="catsDesktop"></div></div></aside><div class="shop-content">
 <div class="toolbar"><div><h2 id="title">Todos los productos</h2><div class="small" id="count"></div></div>
 <select id="sort" onchange="render()"><option value="default">Orden recomendado</option><option value="asc">Menor precio</option><option value="desc">Mayor precio</option><option value="az">A-Z</option></select></div>
-<div class="grid" id="grid"><div class="loading">Cargando productos actuales…</div></div><div class="more-wrap"><button id="more" type="button" onclick="showMore()" hidden>Mostrar 24 productos más ↓</button></div></div><aside class="sidebar"><h3>Categorías</h3><div class="cats" id="cats"></div></aside></div>
+<div class="grid" id="grid"><div class="loading">Cargando productos actuales…</div></div><div class="more-wrap"><button id="more" type="button" onclick="showMore()" hidden>Mostrar 24 productos más ↓</button></div></div>
 </main>
 <footer>Electrobazar MYV · Precios sujetos a actualización del proveedor · Consultá disponibilidad antes de confirmar.</footer>
 <script>
@@ -76,7 +83,7 @@ function normalizeSearchText(value=""){
 }
 
 const MARKUP=2.20;
-const WHATSAPP="5491170582166";
+const WHATSAPP="5491168247942";
 const icons={"Hogar":"🏠","Moda y accesorios":"👜","Infantil":"🧸","Belleza y cuidado":"✨","Tecnología":"📱","Tiempo libre":"⛺","Iluminación":"💡","Electrodomésticos":"🔌","Ferretería":"🛠️","Librería":"✏️"};
 let products=[],active="Todos",visibleCount=24,filtered=[];
 
@@ -85,17 +92,18 @@ function finalPrice(c){return Math.ceil((c*MARKUP)/100)*100}
 function slugify(s=""){return s.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[^a-z0-9]+/g,"-").replace(/^-+|-+$/g,"")}
 function productUrl(p){return "/producto/"+slugify(p.name+"-"+(p.code||""))}
 function esc(s){return String(s??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m]))}
-function setCat(c){active=c;visibleCount=24;document.getElementById("title").textContent=c==="Todos"?"Todos los productos":c;render();window.scrollTo({top:document.querySelector(".toolbar").offsetTop-120,behavior:"smooth"})}
+function setCat(c){document.querySelector(".mobile-cats").open=false;active=c;visibleCount=24;document.getElementById("title").textContent=c==="Todos"?"Todos los productos":c;render();window.scrollTo({top:document.querySelector(".toolbar").offsetTop-120,behavior:"smooth"})}
 function setupCats(){
   const cats=["Todos",...new Set(products.map(p=>p.category).filter(Boolean))];
-  document.getElementById("nav").innerHTML=cats.map(c=>`<button onclick='setCat(${JSON.stringify(c)})'>${esc(c)}</button>`).join("");
-  document.getElementById("cats").innerHTML=cats.map(c=>`<div class="cat" onclick='setCat(${JSON.stringify(c)})'><div class="i">${icons[c]||"🛍️"}</div>${esc(c)}</div>`).join("");
+  const html=cats.map(c=>`<button type="button" class="cat" onclick='setCat(${JSON.stringify(c)})'>${icons[c]||"🛍️"} ${esc(c)}</button>`).join("");
+  document.getElementById("cats").innerHTML=html;
+  document.getElementById("catsDesktop").innerHTML=html;
 }
 function render(){
   visibleCount=24; updateProducts();
 }
-function showMore(){visibleCount+=24;updateProducts();}
-function updateProducts(){
+function showMore(){visibleCount+=24;updateProducts(true);}
+function updateProducts(append=false){
   const q=document.getElementById("q").value.trim().toLowerCase();
   const sort=document.getElementById("sort").value;
   let list=products.filter(p=>(active==="Todos"||p.category===active)&&(!q||(p.name+" "+p.code+" "+p.category).toLowerCase().includes(q)));
@@ -104,12 +112,17 @@ function updateProducts(){
   if(sort==="az") list.sort((a,b)=>a.name.localeCompare(b.name));
   document.getElementById("count").textContent=`${list.length} productos`;
   document.getElementById("more").hidden=list.length<=visibleCount;
-  document.getElementById("grid").innerHTML=list.slice(0,visibleCount).map((p,i)=>{
+  const grid=document.getElementById("grid");
+  const start=append?Math.min(grid.children.length,visibleCount):0;
+  const html=list.slice(start,visibleCount).map((p,j)=>{
+    const i=start+j;
     const fp=finalPrice(p.cost);
     const msg=encodeURIComponent(`¡Hola! 😊 Quiero realizar un pedido en Electrobazar MYV 🛍️\n\n📦 Producto: ${p.name}${p.code?`\n🔖 Código: ${p.code}`:""}\n💰 Precio publicado: ${money(fp)}\n\n🚚 Quisiera coordinar la entrega a domicilio.\n\n¿Me confirmás disponibilidad y cuándo podría recibirlo? ¡Gracias!`);
-    const img=p.image?`<img loading="${i<6?"eager":"lazy"}" decoding="async" ${i<4?'fetchpriority="high"':''} src="/api/image?url=${encodeURIComponent(p.image)}" alt="${esc(p.name)}" onerror="this.parentNode.innerHTML='<div class=&quot;ph&quot;>🛍️<b>Imagen no disponible</b></div>'">`:`<div class="ph">${icons[p.category]||"🛍️"}<b>${esc(p.name)}</b></div>`;
-    return `<article class="card"><div class="pic" onclick="location.href='${productUrl(p)}'"><span class="badge">${esc(p.category)}</span>${img}</div><div class="info"><div class="code">${p.code?`Código ${esc(p.code)}`:""}</div><div class="name"><a href="${productUrl(p)}" style="color:inherit;text-decoration:none">${esc(p.name)}</a></div><div class="price">${money(fp)}</div><div class="ok">Pedidos con entrega a domicilio</div><a class="wa" target="_blank" href="https://wa.me/${WHATSAPP}?text=${msg}">🛍️ Hacer mi pedido por WhatsApp</a></div></article>`;
-  }).join("")||'<div class="loading">No encontramos productos.</div>';
+    const img=p.image?`<img loading="${i<8?"eager":"lazy"}" decoding="async" ${i<4?'fetchpriority="high"':'fetchpriority="low"'} src="/api/image?url=${encodeURIComponent(p.image)}" alt="${esc(p.name)}" onerror="this.parentNode.innerHTML='<div class=&quot;ph&quot;>🛍️<b>Imagen no disponible</b></div>'">`:`<div class="ph">${icons[p.category]||"🛍️"}<b>${esc(p.name)}</b></div>`;
+    return `<article class="card"><div class="pic"><span class="badge">${esc(p.category)}</span>${img}</div><div class="info"><div class="code">${p.code?`Código ${esc(p.code)}`:""}</div><div class="name">${esc(p.name)}</div><div class="price">${money(fp)}</div><div class="ok">Pedidos con entrega a domicilio</div><a class="wa" target="_blank" href="https://wa.me/${WHATSAPP}?text=${msg}">🛍️ Comprar ahora por WhatsApp</a></div></article>`;
+  }).join("");
+  if(append) grid.insertAdjacentHTML("beforeend",html);
+  else grid.innerHTML=html||'<div class="loading">No encontramos productos.</div>';
 }
 async function load(){
   try{

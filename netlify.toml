@@ -18,8 +18,8 @@
 
 [[redirects]]
   from = "/producto/*"
-  to = "/.netlify/functions/seo-page"
-  status = 200
+  to = "/"
+  status = 302
 
 [[redirects]]
   from = "/categoria/*"
