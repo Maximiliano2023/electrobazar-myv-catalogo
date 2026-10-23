@@ -39,6 +39,23 @@ footer{background:#232323;color:#ddd;text-align:center;padding:25px 18px;font-si
 .sidebar .cat{display:block;width:100%;text-align:left;white-space:normal;cursor:pointer;background:#fff;border:1px solid var(--line);font:inherit;font-size:13px;padding:11px;border-radius:9px}
 .sidebar .cat:hover{border-color:var(--brand);background:#f5f2ff}
 @media(max-width:760px){.shop-layout{display:flex;flex-direction:column;gap:12px}.sidebar{width:100%;position:static;order:0;padding:10px}.shop-content{width:100%}.desktop-cats{display:none}.mobile-cats{display:block}.mobile-cats summary{cursor:pointer;font-weight:700;padding:6px}.mobile-cats .cats{max-height:260px;overflow:auto;padding-top:8px}.sidebar .cat{white-space:normal}}
+
+/* Nueva identidad visual: fucsia, amarillo, blanco y verde WhatsApp */
+:root{--brand:#ee167c;--brand2:#ac16bb;--bg:#faf9fc;--green:#079d43;--line:#eee6ee}
+header{background:linear-gradient(100deg,#11131b,#202031);box-shadow:0 3px 16px #0002}
+.top{max-width:1480px;padding:17px 20px}.logo{font-size:26px;letter-spacing:-.8px}.logo strong{color:#ff3b97}
+.search{border-radius:40px}.search input{padding:15px 20px}.search span{background:#ff298e;color:white;padding:15px 19px}
+.contact{display:flex;align-items:center;gap:9px;color:#fff;text-decoration:none;font-size:15px;font-weight:800;white-space:nowrap}.contact span{background:#06ad4a;padding:9px;border-radius:50%}
+.nav{background:linear-gradient(90deg,#f20c77,#9d12bb);color:white;border:0}.navin{max-width:1480px;justify-content:center;gap:32px}.nav button{color:white;font-weight:700;padding:5px 0}
+.hero{max-width:1480px;margin:14px auto}.heroBox{background:linear-gradient(105deg,#7020a6 0%,#d813a3 52%,#ff9d2d 100%);min-height:215px;box-shadow:0 8px 22px #b5237933}.hero h1{font-size:clamp(30px,4vw,55px);font-weight:900;text-shadow:0 3px 5px #0003}.hero p{font-size:17px}.pill{color:#bd137d;background:#fff8d1}
+.wrap{max-width:1480px}.status{border-color:#f3dce8}.shop-layout{grid-template-columns:245px minmax(0,1fr)}.sidebar{top:112px;border-radius:14px;border-color:#f5dce9;box-shadow:0 2px 15px #00000008}.sidebar h3{background:#f51b81;color:#fff;margin:-14px -14px 12px;padding:16px;border-radius:14px 14px 0 0}
+.sidebar .cat{border:0;border-bottom:1px solid #f4edf1;border-radius:0;font-size:14px}.sidebar .cat:hover{background:#fff0f8;border-color:#ffb3d9}
+.grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:13px}.card{border-color:#f0e8ec;box-shadow:0 3px 12px #00000009}.pic{height:205px}.price{color:#e81475}.wa{background:#05b747;color:white}.wa:hover{background:#078d39}.badge{background:#fff0f7;color:#d9006d}#more{background:#ed167d}.toolbar h2{font-size:24px}
+.trust{max-width:1480px;margin:0 auto 20px;padding:0 18px;display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.trust div{background:#fff;border:1px solid #f3e7ed;border-radius:12px;padding:14px;text-align:center;font-size:13px;font-weight:800}.trust b{color:#ed167d}
+footer{background:#181923}
+@media(max-width:1100px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}.navin{gap:16px}}
+@media(max-width:760px){.top{flex-wrap:wrap}.logo{font-size:23px}.contact{font-size:12px}.search{order:3;flex-basis:100%}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.shop-layout{display:flex;flex-direction:column}.sidebar h3{display:none}.trust{grid-template-columns:repeat(2,1fr)}.navin{justify-content:flex-start}.heroBox{min-height:165px}}
+@media(max-width:380px){.contact{font-size:11px}.logo{font-size:20px}.pic{height:150px}.price{font-size:19px}}
 </style>
 
 <script type="application/ld+json">
@@ -60,10 +77,12 @@ footer{background:#232323;color:#ddd;text-align:center;padding:25px 18px;font-si
 </head>
 <body>
 <header>
-<div class="top"><div class="logo">Electrobazar MYV</div><div class="search"><input id="q" placeholder="Buscar productos..." oninput="render()"><span>🔎</span></div></div>
+<div class="top"><div class="logo">ELECTROBAZAR <strong>MYV</strong></div><div class="search"><input id="q" placeholder="Buscar productos..." oninput="render()"><span>🔎</span></div><a class="contact" href="https://wa.me/5491168247942" target="_blank" rel="noopener"><span>☎</span> 11 6824-7942</a></div>
 
 </header>
-<section class="hero"><div class="heroBox"><div><h1>Elegí tu producto</h1><p>Precios actualizados automáticamente · Consultas por WhatsApp</p></div><div class="pill">🚚 Pedidos y entregas</div></div></section>
+<div class="nav"><div class="navin"><button onclick="setCat('Todos')">⌂ Inicio</button><button onclick="document.getElementById('q').focus()">🏷️ Ofertas y productos</button><button onclick="document.querySelector('.sidebar').scrollIntoView({behavior:'smooth'})">☰ Categorías</button><button onclick="window.open('https://wa.me/5491168247942','_blank')">✉ Contacto</button></div></div>
+<section class="hero"><div class="heroBox"><div><h1>TODO PARA TU HOGAR</h1><p>✨ Gran variedad, precios increíbles y pedidos por WhatsApp</p></div><div class="pill">🚚 Pedidos y entregas</div></div></section>
+<div class="trust"><div>🏷️ <b>PRECIOS</b> ECONÓMICOS</div><div>🚚 ENTREGA A DOMICILIO</div><div>💬 COMPRA POR WHATSAPP</div><div>✨ GRAN VARIEDAD</div></div>
 <main class="wrap">
 <div class="status" id="status">Actualizando catálogo…</div>
 <div class="shop-layout"><aside class="sidebar"><details class="mobile-cats"><summary>☰ Ver categorías</summary><div class="cats" id="cats"></div></details><div class="desktop-cats"><h3>Categorías</h3><div class="cats" id="catsDesktop"></div></div></aside><div class="shop-content">

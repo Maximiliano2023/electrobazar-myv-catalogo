@@ -1,0 +1,9 @@
+ELECTROBAZAR MYV - DISEÑO Fucsia y violeta
+
+Se cambió la apariencia de la página principal sin cambiar el motor del catálogo. No incluye carrito ni Mi cuenta. Las categorías se mantienen a la izquierda en escritorio y en menú desplegable en celular.
+
+Para publicar: subir el contenido de esta carpeta a la raíz del repositorio, incluyendo public y netlify. Confirmar cambios y verificar publicación en Netlify.
+
+Se preserva el comportamiento previo de las fichas de producto deshabilitadas y los enlaces de WhatsApp.
+
+IMPORTANTE: La imagen conceptual mostrada en el chat no es un diseño HTML idéntico. Este archivo implementa una estética inspirada en ella y conserva las fotos y precios reales del catálogo.
