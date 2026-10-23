@@ -21,7 +21,7 @@ export default async (req) => {
       headers: {
         "content-type": r.headers.get("content-type") || "image/jpeg",
         "cache-control": "public, max-age=604800, immutable",
-        "netlify-cdn-cache-control": "public, durable, max-age=604800"
+        "Netlify-CDN-Cache-Control": "public, durable, s-maxage=604800"
       }
     });
   } catch (e) {

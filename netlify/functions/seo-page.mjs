@@ -38,7 +38,10 @@ ${jsonld ? `<script type="application/ld+json">${jsonld}</script>` : ""}
 export default async (req) => {
   try {
     const path = new URL(req.url).pathname;
-    const products = await getCatalog();
+    const catalogResponse = await fetch(`${SITE}/catalogo.json`, {headers:{accept:"application/json"}});
+    if (!catalogResponse.ok) throw new Error("Catálogo publicado no disponible");
+    const catalogData = await catalogResponse.json();
+    const products = catalogData.products || [];
 
     if (path.startsWith("/producto/")) {
       const slug = path.split("/").filter(Boolean)[1] || "";
@@ -61,7 +64,7 @@ ${p.code ? `🔖 Código: ${p.code}\n` : ""}💰 Precio publicado: ${money(fp)}
 
 ¿Me confirmás disponibilidad y cuándo podría recibirlo? ¡Gracias!`;
 
-      const whatsapp = `https://wa.me/5491168247942?text=${encodeURIComponent(mensaje)}`;
+      const whatsapp = `https://wa.me/5491170582166?text=${encodeURIComponent(mensaje)}`;
 
       const jsonld = JSON.stringify({
         "@context":"https://schema.org",
@@ -89,15 +92,20 @@ ${p.code ? `🔖 Código: ${p.code}\n` : ""}💰 Precio publicado: ${money(fp)}
       ${p.code ? `<div class="muted">Código ${esc(p.code)}</div>` : ""}
       ${p.image ? `<img src="/api/image?url=${encodeURIComponent(p.image)}" alt="${esc(p.name)}">` : ""}
       <div class="price">${money(fp)}</div>
-      <p>Trabajamos por pedido, con entregas aproximadas de 1 a 3 días. Abonás al recibir tu producto. Consultá disponibilidad y zonas de entrega.</p>
-      <a class="wa" href="${whatsapp}" rel="nofollow">🛍️ Hacer mi pedido por WhatsApp</a>
+      <h2>Descripción del producto</h2>
+      <p>${esc(p.description || `Conocé ${p.name}, de nuestra categoría ${p.category}. Consultanos para confirmar características, colores y disponibilidad.`)}</p>
+      <h2>Beneficios de comprar en Electrobazar MYV</h2>
+      <ul><li>Pedido por WhatsApp, con atención personalizada</li><li>Podés consultar disponibilidad y características antes de comprar</li><li>Entregas estimadas entre 1 y 3 días, sujetas a confirmación</li><li>Pagás al recibir tu pedido, según coordinación</li></ul>
+      <p><strong>Consultas:</strong> WhatsApp +54 9 11 7058-2166</p>
+      <p>Trabajamos por pedido. Consultá disponibilidad, condiciones y zonas de entrega.</p>
+      <a class="wa" href="${whatsapp}" rel="nofollow">🛒 Comprar ahora por WhatsApp</a>
       </article>`;
 
       return new Response(
         layout({title:`${p.name} | Electrobazar MYV`,description,canonical,body,jsonld}),
         {headers:{
           "content-type":"text/html; charset=utf-8",
-          "cache-control":"public, s-maxage=900"
+          "cache-control":"public, s-maxage=14400, stale-while-revalidate=300"
         }}
       );
     }
@@ -121,7 +129,7 @@ ${p.code ? `🔖 Código: ${p.code}\n` : ""}💰 Precio publicado: ${money(fp)}
         layout({title:`${cat} | Electrobazar MYV`,description,canonical,body}),
         {headers:{
           "content-type":"text/html; charset=utf-8",
-          "cache-control":"public, s-maxage=900"
+          "cache-control":"public, s-maxage=14400, stale-while-revalidate=300"
         }}
       );
     }

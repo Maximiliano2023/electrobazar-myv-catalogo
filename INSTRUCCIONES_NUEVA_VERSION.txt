@@ -1,0 +1,10 @@
+ELECTROBAZAR MYV - NUEVA VERSIÓN
+1. Conservar copia de seguridad de la versión actual antes de subir.
+2. Subir el CONTENIDO de esta carpeta a la raíz de GitHub, incluyendo .github/workflows.
+3. GitHub > Actions > Actualizar catálogo cada 4 horas > Run workflow. Esperar que termine en verde.
+4. Confirmar que public/catalogo.json aparece en el repositorio.
+5. Comprobar que Netlify publicó el commit y que /catalogo.json devuelve productos.
+6. Verificar página principal, categorías, detalle de producto y WhatsApp.
+7. GitHub Actions puede requerir habilitar permisos de escritura para workflows en Settings > Actions > General.
+IMPORTANTE: Si no existe public/catalogo.json, la tienda mostrará error de catálogo; ejecutar workflow antes de considerar la tienda lista.
+NOTA: Descripciones específicas dependen de los datos reales del proveedor. Si no existen, la ficha usa texto general y no inventa características.
