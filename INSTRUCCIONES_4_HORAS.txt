@@ -1,0 +1,11 @@
+ELECTROBAZAR MYV - CATÁLOGO PARA VISITANTES NUEVOS
+
+1. Subir TODOS los archivos y carpetas de este ZIP al repositorio GitHub conectado con Netlify, incluida la carpeta oculta .github/workflows.
+2. En GitHub: Actions > Actualizar catálogo cada 4 horas > Run workflow. Esperar a que termine correctamente.
+3. Confirmar que aparece public/catalogo.json en GitHub y esperar el deploy de Netlify.
+4. Abrir https://electrobazarmyv.com/catalogo.json para comprobar que se sirve el catálogo.
+5. La página ahora lee el archivo estático, sin consultar al mayorista para cada visitante.
+
+IMPORTANTE: GitHub Actions puede retrasar tareas programadas. Para que funcione, el repositorio debe permitir Actions y el token GITHUB_TOKEN debe tener permiso para escribir (Settings > Actions > General > Workflow permissions > Read and write permissions, si corresponde). Si GitHub bloquea pushes del workflow, usar un token autorizado o ajustar permisos. El catálogo viejo permanece si falla la actualización. La primera vez, antes de ejecutar el workflow, seguirá usando /api/catalog como respaldo.
+
+No se modificó MARKUP ni los precios. La velocidad final también depende de imágenes y red del visitante.
