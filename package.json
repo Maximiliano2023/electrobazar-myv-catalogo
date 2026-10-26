@@ -5,5 +5,8 @@
   "type": "module",
   "dependencies": {
     "cheerio": "^1.0.0"
+  },
+  "scripts": {
+    "build": "node scripts/actualizar-catalogo.mjs"
   }
 }

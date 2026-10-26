@@ -1,0 +1,4 @@
+CAMBIO: Netlify ahora genera public/catalogo.json durante el build, para evitar que los visitantes esperen la consulta lenta a /api/catalog.
+ATENCION: cada nuevo despliegue vuelve a generar el catálogo. Si el proveedor no responde, el despliegue puede fallar y Netlify conserva la versión anterior publicada.
+La actualización automática cada 2 horas requiere un mecanismo de despliegue programado separado; este cambio no lo configura.
+Precios, WhatsApp y productos no fueron alterados.
