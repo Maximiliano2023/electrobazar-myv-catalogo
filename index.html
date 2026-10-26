@@ -1,6 +1,16 @@
 <!doctype html>
 <html lang="es">
 <head>
+<!-- Google Analytics 4 - ELECTROBAZAR MYV -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-DWL05PLLNG"></script>
+<script>
+window.dataLayer=window.dataLayer||[];
+function gtag(){dataLayer.push(arguments);}
+gtag('js',new Date());
+gtag('config','G-DWL05PLLNG');
+function myvTrack(name,params){if(typeof gtag==='function')gtag('event',name,params||{});}
+</script>
+
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Electrobazar MYV | Catálogo</title>
@@ -153,7 +163,7 @@ function finalPrice(c){return Math.ceil((c*MARKUP)/100)*100}
 function slugify(s=""){return s.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").replace(/[^a-z0-9]+/g,"-").replace(/^-+|-+$/g,"")}
 function productUrl(p){return "/producto/"+slugify(p.name+"-"+(p.code||""))}
 function esc(s){return String(s??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m]))}
-function setCat(c){document.querySelector(".mobile-cats").open=false;active=c;visibleCount=24;document.getElementById("title").textContent=c==="Todos"?"Todos los productos":c;render();window.scrollTo({top:document.querySelector(".toolbar").offsetTop-120,behavior:"smooth"})}
+function setCat(c){myvTrack('select_category',{category_name:c});document.querySelector(".mobile-cats").open=false;active=c;visibleCount=24;document.getElementById("title").textContent=c==="Todos"?"Todos los productos":c;render();window.scrollTo({top:document.querySelector(".toolbar").offsetTop-120,behavior:"smooth"})}
 function setupCats(){
   const cats=["Todos",...new Set(products.map(p=>p.category).filter(Boolean))];
   const html=cats.map(c=>`<button type="button" class="cat" onclick='setCat(${JSON.stringify(c)})'>${icons[c]||"🛍️"} ${esc(c)}</button>`).join("");
@@ -180,7 +190,7 @@ function updateProducts(append=false){
     const fp=finalPrice(p.cost);
     const msg=encodeURIComponent(`¡Hola! 😊 Quiero realizar un pedido en Electrobazar MYV 🛍️\n\n📦 Producto: ${p.name}${p.code?`\n🔖 Código: ${p.code}`:""}\n💰 Precio publicado: ${money(fp)}\n\n🚚 Quisiera coordinar la entrega a domicilio.\n\n¿Me confirmás disponibilidad y cuándo podría recibirlo? ¡Gracias!`);
     const img=p.image?`<img loading="${i<8?"eager":"lazy"}" decoding="async" ${i<4?'fetchpriority="high"':'fetchpriority="low"'} src="/api/image?url=${encodeURIComponent(p.image)}" alt="${esc(p.name)}" onerror="this.parentNode.innerHTML='<div class=&quot;ph&quot;>🛍️<b>Imagen no disponible</b></div>'">`:`<div class="ph">${icons[p.category]||"🛍️"}<b>${esc(p.name)}</b></div>`;
-    return `<article class="card"><div class="pic"><span class="badge">${esc(p.category)}</span>${img}</div><div class="info"><div class="code">${p.code?`Código ${esc(p.code)}`:""}</div><div class="name">${esc(p.name)}</div><div class="price">${money(fp)}</div><div class="ok">Pedidos con entrega a domicilio</div><a class="wa" target="_blank" href="https://wa.me/${WHATSAPP}?text=${msg}">🛍️ Comprar ahora por WhatsApp</a></div></article>`;
+    return `<article class="card" data-product-name="${esc(p.name)}" data-product-code="${esc(p.code||'')}" data-product-category="${esc(p.category)}"><div class="pic"><span class="badge">${esc(p.category)}</span>${img}</div><div class="info"><div class="code">${p.code?`Código ${esc(p.code)}`:""}</div><div class="name">${esc(p.name)}</div><div class="price">${money(fp)}</div><div class="ok">Pedidos con entrega a domicilio</div><a class="wa" target="_blank" href="https://wa.me/${WHATSAPP}?text=${msg}">🛍️ Comprar ahora por WhatsApp</a></div></article>`;
   }).join("");
   if(append) grid.insertAdjacentHTML("beforeend",html);
   else grid.innerHTML=html||'<div class="loading">No encontramos productos.</div>';
@@ -225,6 +235,31 @@ setInterval(()=>{if(!document.hidden)setBanner(bannerIndex+1)},5000);
 function populateBannerPhotos(){bannerSlides.forEach((slide,i)=>{const category=slide.dataset.bannerCat;const candidates=products.filter(p=>p.image&&(category==='Todos'||p.category===category));if(!candidates.length)return;const p=candidates[(i*7)%candidates.length];const img=document.createElement('img');img.className='banner-photo';img.alt=p.name;img.loading=i===0?'eager':'lazy';img.decoding='async';img.src='/api/image?url='+encodeURIComponent(p.image);img.onerror=()=>img.remove();slide.querySelector('.banner-visual').prepend(img);slide.querySelector('.banner-emoji').style.display='none';img.onerror=()=>{img.remove();slide.querySelector('.banner-emoji').style.display='block';};});}
 
 load();
+</script>
+
+<script>
+// Medición de interacciones del catálogo (delegación para productos cargados dinámicamente).
+document.addEventListener('click',function(e){
+  const wa=e.target.closest('a[href*="wa.me/"]');
+  const card=e.target.closest('.card');
+  if(wa){
+    const p=wa.closest('.card');
+    myvTrack('click_whatsapp',{
+      product_name:p?.dataset.productName||'Contacto general',
+      product_code:p?.dataset.productCode||'',
+      category_name:p?.dataset.productCategory||''
+    });
+    return;
+  }
+  if(card){myvTrack('select_item',{
+    product_name:card.dataset.productName||'',
+    product_code:card.dataset.productCode||'',
+    category_name:card.dataset.productCategory||''
+  });}
+  else if(e.target.closest('.nav button[onclick*="window.open"]')){
+    myvTrack('click_whatsapp',{product_name:'Contacto general'});
+  }
+});
 </script>
 </body>
 </html>
